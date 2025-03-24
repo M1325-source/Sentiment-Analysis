@@ -1,0 +1,56 @@
+import pandas as pd
+import random
+
+# Sample positive and negative words
+positive_words = ["good", "excellent", "happy", "great", "amazing", "love", "fantastic", "awesome", "satisfied", "pleasant"]
+negative_words = ["bad", "terrible", "sad", "awful", "hate", "horrible", "disappointed", "worst", "poor", "unpleasant"]
+
+# Generate random sentences for sentiment analysis
+def generate_sentence(sentiment):
+    words = random.choices(positive_words if sentiment == "positive" else negative_words, k=random.randint(5, 10))
+    return " ".join(words)
+
+# Create DataFrame
+data = {
+    "text": [generate_sentence("positive" if i % 2 == 0 else "negative") for i in range(1000)],
+    "sentiment": ["positive" if i % 2 == 0 else "negative" for i in range(1000)]
+}
+
+df = pd.DataFrame(data)
+df.head()
+df['text'].shape
+import tensorflow as tf
+from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+texts=df['text'].tolist()
+texts
+
+tokenizer= Tokenizer(num_words=10000, oov_token="<OOV>")
+
+tokenizer.fit_on_texts(texts)
+
+tokenizer
+sequences = tokenizer.texts_to_sequences(texts)
+print(sequences)
+max_length = 50  # Adjust based on dataset
+padded_sequences = pad_sequences(sequences, maxlen=max_length, padding='post', truncating='post')
+
+print(padded_sequences[0])
+word_index = tokenizer.word_index
+
+# Check the ID of a specific word
+word = "love"
+word_id = word_index.get(word)  # .get() avoids KeyError if word is missing
+print(f"Word: '{word}' → ID: {word_id}")
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Embedding, SimpleRNN, Dense
+
+
+model = Sequential([
+    Embedding(input_dim=10000, output_dim=300, input_length=max_length),  # Word embedding layer
+    SimpleRNN(64, return_sequences=False),  # Simple RNN layer
+    Dense(32, activation='relu'),  # Hidden Dense layer with 32 neurons
+    Dense(1, activation='sigmoid')  # Output layer for binary classification
+])
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
