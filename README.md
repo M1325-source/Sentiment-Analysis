@@ -1,222 +1,154 @@
-🌟 Twitter Sentiment Analyzer — Explainable AI Dashboard
-
-Advanced NLP • TF-IDF Logistic Regression • Streamlit • Explainability
-
-<p align="center"> <img src="https://img.shields.io/badge/NLP-Sentiment%20Analysis-blueviolet?style=for-the-badge"/> <img src="https://img.shields.io/badge/Model-Logistic%20Regression-brightgreen?style=for-the-badge"/> <img src="https://img.shields.io/badge/Explainable%20AI-Token%20Attribution-orange?style=for-the-badge"/> <img src="https://img.shields.io/badge/UI-Streamlit-red?style=for-the-badge"/> </p>
-
-🚀 Project Overview
-
-
-
-A fully interactive Sentiment Analysis Dashboard built using TF-IDF + Logistic Regression, enhanced with Explainable AI and a modern Streamlit UI.
-
-
-
-This app allows users to:
-
-
-
-✔ Analyze sentiment of any text
-
-✔ Upload CSV files for batch processing
-
-✔ View visual insights (bar charts, word clouds)
-
-✔ See which words contributed most to positive/negative sentiment
-
-✔ Get instant, shareable insights on a clean and modern dashboard
-
-
-
-🔗 Live Demo: <your Streamlit URL here>
-
-📦 Repository: https://github.com/M1325-source/Sentiment-Analysis
-
-
-
-✨ Key Features
-
-🔍 1. Real-Time Text Sentiment Analysis
-
-
-
-Enter any text or paragraph
-
-
-
-Model predicts:
-
-
-
-Sentiment → Positive / Negative
-
-
-
-Confidence score
-
-
-
-Beautiful “confidence gauge bar”
-
-
-
-📊 2. CSV Report Studio (Batch Analysis)
-
-
-
-Upload a CSV with a text column and get:
-
-
-
-Full predictions table
-
-
-
-Sentiment distribution chart
-
-
-
-Positive + Negative word clouds
-
-
-
-Dataset summary metrics
-
-
-
-Perfect for analyzing tweets, reviews, support messages, etc.
-
-
-
-🧠 3. Explainable AI (Token-Level Influence)
-
-
-
-For every input text, the app highlights:
-
-
-
-Top positive words boosting sentiment
-
-
-
-Top negative words lowering sentiment
-
-
-
-Weighted importance score for each word
-
-
-
-This makes the model transparent \& recruiter-impressive.
-
-
-
-🎨 4. Modern, Dark-Themed UI
-
-
-
-Professional dashboard feel
-
-
-
-Clean typography
-
-
-
-Animated components
-
-
-
-Two-tab layout:
-
-
-
-Live Text Analyzer
-
-
-
-CSV Report Studio
-
-
-
-🏗️ Tech Stack
-
-Layer	Technology
-
-Frontend UI	Streamlit (Custom CSS + Responsive Layout)
-
-Machine Learning Model	Logistic Regression
-
-Feature Engineering	TF-IDF Vectorizer
-
-Explainability	Token Weight Attribution
-
-Visualizations	Matplotlib, WordCloud
-
-Language Processing	NLTK
-
-Deployment	Streamlit Cloud
-
-📁 Project Structure
-
+# 🌟 Twitter Sentiment Analyzer — Explainable AI Dashboard
+
+> Advanced NLP pipeline using **TF-IDF + Logistic Regression** with Explainable AI token attribution, batch CSV processing, and a live Streamlit dashboard.
+
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Streamlit-FF4B4B)](https://sentiment-analysis-58bkiqua6elowgtt5wnkjc.streamlit.app/)
+[![Python](https://img.shields.io/badge/Python-100%25-blue)](https://www.python.org/)
+[![Stars](https://img.shields.io/github/stars/M1325-source/Sentiment-Analysis)](https://github.com/M1325-source/Sentiment-Analysis)
+
+---
+
+## 🔗 Live Demo
+
+👉 **[Try it live →](https://sentiment-analysis-58bkiqua6elowgtt5wnkjc.streamlit.app/)**
+
+Type any text or upload a CSV and get instant sentiment predictions with explainability!
+
+---
+
+## 🎯 Overview
+
+A fully interactive **Sentiment Analysis Dashboard** that goes beyond basic positive/negative prediction — it shows **which words drove the sentiment** using Explainable AI token attribution.
+
+Built for:
+- Social media analysis (tweets, reviews)
+- Customer feedback classification
+- Batch processing of large text datasets
+
+---
+
+## ✨ Features
+
+### 🔍 Real-Time Text Analysis
+- Enter any text and get instant prediction
+- **Positive / Negative** classification
+- **Confidence score** with visual gauge bar
+
+### 📊 CSV Batch Processing (Report Studio)
+- Upload any CSV with a text column
+- Full predictions table with sentiment labels
+- Sentiment distribution bar chart
+- Positive + Negative **word clouds**
+- Dataset summary metrics
+
+### 🧠 Explainable AI (Token Attribution)
+- Highlights **top positive words** boosting sentiment
+- Highlights **top negative words** lowering sentiment
+- Weighted importance score per word
+- Makes the model **transparent and interpretable**
+
+### 🎨 Modern Dark-Themed UI
+- Professional dashboard layout
+- Two-tab interface: Live Analyzer + CSV Studio
+- Clean typography and animated components
+
+---
+
+## 🏗️ System Architecture
+```
+Raw Text Input
+      │
+      ▼
+Text Cleaning (NLTK)
+      │
+      ▼
+TF-IDF Vectorization
+      │
+      ▼
+Logistic Regression Model
+      │
+      ├──► Sentiment Prediction (Positive/Negative)
+      ├──► Confidence Score
+      └──► Token Weight Attribution (Explainability)
+                  │
+                  ▼
+         Streamlit Dashboard
+```
+
+---
+
+## ⚙️ Tech Stack
+
+| Component | Technology |
+|---|---|
+| ML Model | Logistic Regression (scikit-learn) |
+| Feature Engineering | TF-IDF Vectorizer |
+| Explainability | Token Weight Attribution |
+| NLP Preprocessing | NLTK |
+| Visualizations | Matplotlib, WordCloud |
+| UI & Deployment | Streamlit + Streamlit Cloud |
+
+---
+
+## 📁 Project Structure
+```
 Sentiment-Analysis/
-
 │
-
-├── app.py                     # Streamlit Dashboard
-
-├── sentiment\_utils.py         # Prediction + Explainability Engine
-
-├── train\_model.py             # Model training script
-
-├── requirements.txt           # Dependencies
-
+├── app.py                     ← Streamlit dashboard (main entry)
+├── sentiment_utils.py         ← Prediction + Explainability engine
+├── train_model.py             ← Model training script
+├── test_analysis.py           ← Local testing script
+├── requirements.txt
 │
+└── models/
+    ├── sentiment_model.joblib     ← Trained model
+    └── tfidf_vectorizer.joblib    ← Fitted vectorizer
+```
 
-├── models/
+---
 
-│   ├── sentiment\_model.joblib
-
-│   └── tfidf\_vectorizer.joblib
-
-│
-
-└── test\_analysis.py           # Local testing script
-
-
-
-⚙️ How to Run Locally
-
-1️⃣ Clone repository
-
+## 🚀 Run Locally
+```bash
+# Clone the repo
 git clone https://github.com/M1325-source/Sentiment-Analysis.git
-
 cd Sentiment-Analysis
 
-
-
-2️⃣ Install dependencies
-
+# Install dependencies
 pip install -r requirements.txt
 
-
-
-3️⃣ Run the app
-
+# Run the app
 streamlit run app.py
+```
 
+Open **http://localhost:8501** in your browser.
 
+---
 
-🎯 Model Workflow
+## 📊 Model Performance
 
-Raw Text → Cleaning → TF-IDF Vectorization → Logistic Regression Model
+| Metric | Score |
+|---|---|
+| Algorithm | Logistic Regression |
+| Features | TF-IDF (n-grams) |
+| Dataset | Twitter Sentiment140 |
+| Accuracy | ~85%+ |
 
-&nbsp;                                     ↓
+---
 
-&nbsp;                            Explainable Token Weights
+## 🔮 Future Enhancements
 
-&nbsp;                                     ↓
+- BERT / Transformer-based model upgrade
+- Multi-class sentiment (Very Positive, Neutral, Very Negative)
+- Real-time Twitter API integration
+- Aspect-based sentiment analysis
+- REST API endpoint for programmatic access
 
-&nbsp;                          Interactive Streamlit Dashboard
+---
 
+## 👩‍💻 Author
+
+**Manisha Priya** — AI/ML Engineer
+- 🐙 GitHub: [@M1325-source](https://github.com/M1325-source)
+- 📧 Email: manishapriya1325@gmail.com
+
+⭐ **Star this repo if you found it useful!**
