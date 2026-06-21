@@ -122,6 +122,20 @@ streamlit run app.py
 
 Open **http://localhost:8501** in your browser.
 
+### Use TweetClaw exports
+
+The CSV Studio expects a `text` column. If you collect reviewed public X/Twitter
+posts with [TweetClaw](https://github.com/Xquik-dev/tweetclaw), convert the
+export before upload:
+
+```bash
+python scripts/tweetclaw_to_sentiment_csv.py examples/tweetclaw-export-sample.json --output tweetclaw_sentiment_input.csv
+```
+
+Upload `tweetclaw_sentiment_input.csv` in the CSV Studio tab. The converter
+accepts TweetClaw JSON, JSONL, NDJSON, or CSV exports and preserves source
+metadata in extra columns for auditability.
+
 ---
 
 ## 📊 Model Performance
